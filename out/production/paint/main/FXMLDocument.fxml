@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+*@author: Alex Kaariainen
+*FXMLDocument.fxml
+*Version 0.3
+*Description: FXML source file where UI is defined
+ -->
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.canvas.*?>
+
+
+<BorderPane fx:controller="main.FXMLDocumentController"
+            xmlns:fx="http://javafx.com/fxml" >
+
+    <!-- top pane -->
+    <top>
+
+        <!-- primary menubar -->
+        <MenuBar fx:id="menuBar">
+            <menus>
+                <Menu text="File">
+                    <items>
+                        <MenuItem text="Open"
+                                  onAction="#handleOpenFileAction" accelerator="Shortcut+O" />
+                        <MenuItem text="Save"
+                                  fx:id="menuBarSave" onAction="#handleSaveAction"
+                                  disable="true" accelerator="Shortcut+S" />
+                        <MenuItem text="Save As" fx:id="menuBarSaveAs"
+                                  onAction="#handleSaveAsAction" disable="true" accelerator="Shortcut+Shift+S"/>
+                    </items>
+                </Menu>
+                <Menu text="Edit">
+                    <items>
+                        <MenuItem text="Copy" fx:id="menuBarCopy"
+                                  onAction="#handleCopy" disable="true" accelerator="Shortcut+C"/>
+                        <MenuItem text="Cut"  fx:id="menuBarCut"
+                                  onAction="#handleCut" disable="true" accelerator="Shortcut+X"/>
+                        <MenuItem text="Undo" fx:id="menuBarUndo"
+                                  onAction="#handleUndo" disable="true" accelerator="Shortcut+z" />
+                        <MenuItem text="Redo" fx:id="menuBarRedo"
+                                  onAction="#handleRedo" disable="true" accelerator="Shortcut+U" />
+                    </items>
+                </Menu>
+                <Menu text="Effects">
+                    <items>
+                        <MenuItem text="Color dropper" fx:id="menuBarColorDropper"
+                                  onAction="#handleColorDropper" disable="true" accelerator="Shortcut+O" />
+                        <MenuItem text="Eraser" fx:id="menuBarEraser"
+                                  onAction="#handleEraser" disable="true" accelerator="Shortcut+E" />
+                        <MenuItem text="Text" fx:id="menuBarText"
+                                  onAction="#handleText" disable="true" accelerator="Shortcut+T" />
+                    </items>
+                </Menu>
+                <Menu text="Line" >
+                    <items>
+                        <MenuItem text="Set Width" fx:id="menuBarLineSetWidth"
+                                  onAction="#handleLineSetWidth" disable="true" accelerator="Shortcut+W" />
+                        <MenuItem text="Straight Line" fx:id="menuBarStraightLine"
+                                  onAction="#handleTwoPointLine" disable="true" accelerator="Shortcut+L"/>
+                        <MenuItem text="Free Hand Line" fx:id="menuBarContLine"
+                                  onAction="#handleCTLine" disable="true" accelerator="Shortcut+K"/>
+                    </items>
+                </Menu>
+                <Menu text="Shape" >
+                    <items>
+                        <Menu text="Rectangle" >
+                            <MenuItem text="Solid Rectangle" fx:id="menuBarSolidRectangle"
+                                      onAction="#handleFillRectangle" accelerator="Shortcut+R" disable="true"/>
+                            <MenuItem text="Rectangle Outline" fx:id="menuBarOutlineRectangle"
+                                      onAction="#handleOutlineRectangle" accelerator="Shortcut+D" disable="true"/>
+                        </Menu>
+                        <Menu text="Oval" >
+                            <MenuItem text="Solid Oval" fx:id="menuBarSolidOval"
+                                      onAction="#handleFillCircle" accelerator="Shortcut+O" disable="true"/>
+                            <MenuItem text="Oval Outline" fx:id="menuBarEmptyOval"
+                                      onAction="#handleOutlineCircle" accelerator="Shortcut+P" disable="true"/>
+                        </Menu>
+                        <Menu text="Triangle">
+                            <MenuItem text="Triangle Outline" fx:id="menuBarTriangle"
+                                      onAction="#handleTriangle" disable="=true" />
+                            <MenuItem text="Solid Triangle " fx:id="menuBarTriangleSolid"
+                                      onAction="#handleTriangleSolid" disable="=true" />
+                        </Menu>
+                        <MenuItem text="Custom Shape" fx:id="menuBarCustomShape"
+                                  onAction="#handleCustomShape" accelerator="Shortcut+B" disable="true" />
+
+
+                    </items>
+                </Menu>
+                <Menu text="Settings">
+                    <items>
+                        <MenuItem text="Help" onAction="#handleTBA"
+                                  accelerator="Shortcut+H"/>
+                        <MenuItem text="About" onAction="#handleAboutAction"
+                                  accelerator="Shortcut+A"/>
+                    </items>
+                </Menu>
+                <Menu text="Exit">
+                    <items>
+                        <MenuItem text="Exit App" onAction="#handleExitAction"
+                                  accelerator="Shortcut+Shift+E"/>
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+    </top>
+
+    <!-- center pane -->
+    <center>
+        <StackPane>
+            <Canvas fx:id="currCanvas" />
+            <Canvas fx:id="previewCanvas" />
+        </StackPane>
+    </center>
+
+    <!-- right pane -->
+    <right>
+        <!-- right hand side verticle tool bar -->
+        <ToolBar fx:id="toolBar">
+            <VBox>
+                <Label>Color</Label>
+                <ColorPicker fx:id="lineColorPicker"/>
+            </VBox>
+        </ToolBar>
+    </right>
+
+</BorderPane>
+
