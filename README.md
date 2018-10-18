@@ -10,7 +10,7 @@ Supports the following features: Open/Save/Save As images (.png, .jpeg, .bmp), c
 _______________________________________________________________
 
 ## Build Instructions
-This project can be compiled using any IDE that supports JavaFX and FXML, I used IntellJ.
+This project can be compiled using any IDE that supports JavaFX and FXML, IntellJ for example.
 _______________________________________________________________
 
 ## Application Screenshot
