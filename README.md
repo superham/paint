@@ -14,4 +14,4 @@ This project can be compiled using any IDE that supports JavaFX and FXML, Intell
 _______________________________________________________________
 
 ## Application Screenshot
-![alt text](https://i.imgur.com/TBa1XWs.png)
+![alt text](https://i.imgur.com/Db6xp3o.png)
