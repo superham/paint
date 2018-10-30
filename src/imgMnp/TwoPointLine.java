@@ -1,4 +1,5 @@
 package imgMnp;
+
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
@@ -9,46 +10,49 @@ public class TwoPointLine{
 
     /**
      *
-     * Draws a two point line onto the canvas passed to it.
-     * Handles mouse events and consuming event.
-     * Returns a boolean to determine if the action was successful.
+     * Draws a two point line onto a canvas of varying width and color. First point is selected when the mouse is
+     * pressed, line then previews as mouse is dragged on a preivew Canvas, line is finally drawn onto the canvas when
+     * the mouse is pressed for a second time.
      *
-     * @return boolean,     TRUE if successfully drew a line
-     * @param canvas        Canvas used to draw line upon
-     * @param lineWidth     Line width as pixels
+     * @return              true if line successfully drawn, false otherwise
+     * @param canvas        Canvas used to draw the line upon
+     * @param lineWidth     Line width in pixels
      * @param lineColor     Color of the line to be drawn
+     *
+     * @author      Alex Kaariainen <alex.kaariainen@valpo.edu>
+     * @version     0.7
+     * @since       0.4
      */
-    public static void line(Canvas canvas, int lineWidth, Color lineColor, Canvas previewCanvas){
+    public static boolean line(Canvas canvas, int lineWidth, Color lineColor, Canvas previewCanvas){
         try{ // try to draw the line
             GraphicsContext gc = canvas.getGraphicsContext2D();
             GraphicsContext gcPreview = previewCanvas.getGraphicsContext2D();
-            double[] numbers;
 
-            previewCanvas.setOnMousePressed( pressEvent -> { //mouse press event
-                System.out.println("Pressing line.");
-                previewCanvas.setOnMouseDragged( dragEvent -> {
+            previewCanvas.setOnMousePressed( pressEvent -> { // first point of the 2d line
+
+                previewCanvas.setOnMouseMoved( dragEvent -> { // line is previewed as the mouse is dragged
                     gcPreview.clearRect(0,0,640.0,480.0);
-                    System.out.println("Dragging line.");
                     gcPreview.setLineWidth(lineWidth);
                     gcPreview.setStroke(lineColor);
                     gcPreview.strokeLine(pressEvent.getX(), pressEvent.getY(), dragEvent.getX(), dragEvent.getY());
-                    previewCanvas.setOnMouseReleased( release2Event -> {
-                        System.out.println("Final here.");
+
+                    previewCanvas.setOnMousePressed( release2Event -> { // second point of line. used to complete line
                         gc.setLineWidth(lineWidth);
                         gc.setStroke(lineColor);
                         gc.strokeLine(pressEvent.getX(), pressEvent.getY(), release2Event.getX(), release2Event.getY());
-                        //numbers = { pressEvent.getX(), pressEvent.getY(), release2Event.getX(),release2Event.getY() };
                         release2Event.consume();
-                        previewCanvas.setOnMouseDragged(null);
-                        previewCanvas.setOnMouseReleased(null);
+                        previewCanvas.setOnMouseMoved(null);
+                        previewCanvas.setOnMousePressed(null);
                     });
                 });
+
                 pressEvent.consume();
                 previewCanvas.setOnMousePressed(null);
             });
-           // return numbers;
+            return true;
         } catch (Exception e){
             ErrorHandle.error("DRAWING A LINE");
+            return false;
         }
     }
 }

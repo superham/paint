@@ -5,19 +5,26 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import main.ErrorHandle;
 
+/**
+ * @author      Alex Kaariainen <alex.kaariainen@valpo.edu>
+ * @version     1.0
+ * @since       0.5
+ */
 
 public class Oval{
 
     /**
      *
-     * Draws a solid circle on the canvas passed to it
-     * Handles mouse evetns and consuming event.
-     * Returns a boolean to determine if the action was successful.
+     * Draws a solid circle on a canvas.
      *
      * @return boolean,     TRUE if successfully drew a line
-     * @param canvas        Canvas used to draw line upon
-     * @param lineWidth     Line width as pixels. Only needed when over laps occur but still needed.
+     * @param canvas        Canvas used to draw oval upon
+     * @param lineWidth     Line width as pixels. O
      * @param color         Color of the line to be drawn
+     *
+     * @author      Alex Kaariainen <alex.kaariainen@valpo.edu>
+     * @version     0.8
+     * @since       0.5
      */
     public static boolean solidCircle(Canvas canvas, int lineWidth, Color color, Canvas previewCanvas){
         GraphicsContext gc = canvas.getGraphicsContext2D();
@@ -60,6 +67,10 @@ public class Oval{
      * @param canvas        Canvas used to draw line upon
      * @param lineWidth     Line width of the border as pixels
      * @param color         Color of the line to be drawn
+     *
+     * @author      Alex Kaariainen <alex.kaariainen@valpo.edu>
+     * @version     0.8
+     * @since       0.5
      */
     public static boolean emptyCircle(Canvas canvas, int lineWidth, Color color, Canvas previewCanvas){
         GraphicsContext gc = canvas.getGraphicsContext2D();

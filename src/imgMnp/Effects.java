@@ -30,6 +30,11 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.Stack;
 
+/**
+ * @author      Alex Kaariainen <alex.kaariainen@valpo.edu>
+ * @version     1.0
+ * @since       0.7
+ */
 
 public class Effects{
 

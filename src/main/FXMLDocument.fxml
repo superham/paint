@@ -12,6 +12,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.canvas.*?>
+<?import javafx.scene.control.Slider.*?>
+<?import javafx.scene.control.CheckBox.*?>
+<?import javafx.scene.image.*?>
 
 
 <BorderPane fx:controller="main.FXMLDocumentController"
@@ -19,7 +22,6 @@
 
     <!-- top pane -->
     <top>
-
         <!-- primary menubar -->
         <MenuBar fx:id="menuBar">
             <menus>
@@ -48,7 +50,7 @@
                 </Menu>
                 <Menu text="Effects">
                     <items>
-                        <MenuItem text="Color dropper" fx:id="menuBarColorDropper"
+                        <MenuItem text="Color Selector" fx:id="menuBarColorDropper"
                                   onAction="#handleColorDropper" disable="true" accelerator="Shortcut+O" />
                         <MenuItem text="Eraser" fx:id="menuBarEraser"
                                   onAction="#handleEraser" disable="true" accelerator="Shortcut+E" />
@@ -58,8 +60,6 @@
                 </Menu>
                 <Menu text="Line" >
                     <items>
-                        <MenuItem text="Set Width" fx:id="menuBarLineSetWidth"
-                                  onAction="#handleLineSetWidth" disable="true" accelerator="Shortcut+W" />
                         <MenuItem text="Straight Line" fx:id="menuBarStraightLine"
                                   onAction="#handleTwoPointLine" disable="true" accelerator="Shortcut+L"/>
                         <MenuItem text="Free Hand Line" fx:id="menuBarContLine"
@@ -82,9 +82,9 @@
                         </Menu>
                         <Menu text="Triangle">
                             <MenuItem text="Triangle Outline" fx:id="menuBarTriangle"
-                                      onAction="#handleTriangle" disable="=true" />
+                                      onAction="#handleTriangle" disable="true" />
                             <MenuItem text="Solid Triangle " fx:id="menuBarTriangleSolid"
-                                      onAction="#handleTriangleSolid" disable="=true" />
+                                      onAction="#handleTriangleSolid" disable="true"/>
                         </Menu>
                         <MenuItem text="Custom Shape" fx:id="menuBarCustomShape"
                                   onAction="#handleCustomShape" accelerator="Shortcut+B" disable="true" />
@@ -123,11 +123,46 @@
         <!-- right hand side verticle tool bar -->
         <ToolBar fx:id="toolBar">
             <VBox>
+                <HBox>
+                    <Button onAction="#handleUndo">
+                        <graphic>
+                            <ImageView>
+                                <image>
+                                    <Image url="@undo-16-16.png" />
+                                </image>
+                            </ImageView>
+                        </graphic>
+                    </Button>
+                    <Separator/>
+                    <Button onAction="#handleRedo">
+                        <graphic>
+                            <ImageView>
+                                <image>
+                                    <Image url="@redo-16-16.png" />
+                                </image>
+                            </ImageView>
+                        </graphic>
+                    </Button>
+                </HBox>
+                <Label fx:id="layerCount" text="Current Layer: #"/>
+                <Separator/>
+                <Label>Font Size (px)</Label>
+                <Slider fx:id="fontSlider" blockIncrement="0.1" layoutX="26.0" layoutY="32.0" majorTickUnit="7"
+                        min="12" max="42" minorTickCount="4" showTickLabels="true" showTickMarks="true" />
+                <HBox>
+                    <Label>Bubble Text: </Label>
+                    <CheckBox fx:id="boldBox"/>
+                    <Separator/>
+                </HBox>
+                <Separator/>
+                <Label>Line Width (px)</Label>
+                <Slider fx:id="lineSlider" blockIncrement="0.1" layoutX="26.0" layoutY="32.0" majorTickUnit="6"
+                        min="1" max="24" minorTickCount="4" showTickLabels="true" showTickMarks="true"/>
+                <Separator/>
                 <Label>Color</Label>
                 <ColorPicker fx:id="lineColorPicker"/>
             </VBox>
         </ToolBar>
     </right>
-
 </BorderPane>
 

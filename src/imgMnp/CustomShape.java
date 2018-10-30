@@ -5,6 +5,12 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import main.ErrorHandle;
 
+/**
+ * @author      Alex Kaariainen <alex.kaariainen@valpo.edu>
+ * @version     1.0
+ * @since       0.9
+ */
+
 public class CustomShape {
 
     public static boolean line(Canvas canvas, int lineWidth, Color lineColor, Canvas previewCanvas){ //TODO fix

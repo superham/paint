@@ -16,6 +16,12 @@ import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.layout.GridPane;
 import javafx.util.Pair;
 
+/**
+ * @author      Alex Kaariainen <alex.kaariainen@valpo.edu>
+ * @version     1.0
+ * @since       0.3
+ */
+
 public class Popup {
     private static final Alert error = new Alert(Alert.AlertType.ERROR);
     private static final Alert info = new Alert(Alert.AlertType.INFORMATION);
@@ -29,23 +35,66 @@ public class Popup {
         confirm.setHeaderText(null);
         confirm.setTitle("Confirmation");
     }
-            
+
+
+    /**
+     *
+     * Creates a pop-up style error message. Message displayed is the string passed to it.
+     *
+     * @param message        Error message displayed to the user.
+     *
+     * @author      Alex Kaariainen <alex.kaariainen@valpo.edu>
+     * @version     0.3
+     * @since       0.3
+     */
     public static void popupError(String message){
         error.setContentText(message);
         error.show();
     }
-    
+
+    /**
+     *
+     * Creates a pop-up style alert message. Message displayed is the string passed to it.
+     *
+     * @param message        Error message displayed to the user.
+     *
+     * @author      Alex Kaariainen <alex.kaariainen@valpo.edu>
+     * @version     0.3
+     * @since       0.3
+     */
     public static void popupAlert(String message){
         info.setContentText(message);
         info.show();
     }
-    
+
+    /**
+     *
+     * Creates a pop-up style confirmation message. Message displayed is the string passed to it. Returns true if they
+     * 'confirm', false if they 'cancel'.
+     *
+     * @return               True if user 'confirmed', false if user 'canceled'
+     * @param message        Error message displayed to the user.
+     *
+     * @author      Alex Kaariainen <alex.kaariainen@valpo.edu>
+     * @version     0.3
+     * @since       0.3
+     */
     public static boolean popupConfirmation(String message){
         confirm.setContentText(message);
         return confirm.showAndWait().get()==ButtonType.OK;
     }
-    
-    //Custom dialog for a new file
+
+    /**
+     *
+     * Creates a custom dialog message used to create a new file.
+     *
+     * @return      Returns an Optional Pair of two strings, canvas height and width.
+     *
+     * @author      Alex Kaariainen <alex.kaariainen@valpo.edu>
+     * @version     0.3
+     * @since       0.3
+     * @deprecated 0.5 Made useless after new file functionality was removed.
+     */
     public static Optional<Pair<String, String>> newFileAlert(){
         //array to store canvas width and height
         int[] data = new int[2];
@@ -106,8 +155,18 @@ public class Popup {
         Optional<Pair<String, String>> result = dialog.showAndWait();
     return result;
     }
-    
-    //Custom dialog for a new file
+
+    /**
+     *
+     * Creates a custom dialog message used to resize the current canvas.
+     *
+     * @return      Returns an Optional Pair of two strings, canvas height and width.
+     *
+     * @author      Alex Kaariainen <alex.kaariainen@valpo.edu>
+     * @version     0.3
+     * @since       0.3
+     * @deprecated 0.5 Made useless after resizing the canvas functionality was removed.
+     */
     public static Optional<Pair<String, String>> resizeCanvas(){
         //array to store canvas width and height
         int[] data = new int[2];
@@ -161,17 +220,17 @@ public class Popup {
     return result;
     }
 
-    //line width dialog
-    public static int popupLineWidth(){
-        TextInputDialog dialog = new TextInputDialog();
-        dialog.setTitle("Line Width");
-        dialog.setHeaderText("Enter new line width in pixels.");
-        dialog.setContentText("Line Width (px):");
-        Optional<String> result = dialog.showAndWait();
-        return Integer.valueOf(result.get());
-    }
-
-    //line width dialog
+    /**
+     *
+     * Creates a popup dialog to get desired user font size.
+     *
+     * @return      Returns the font size
+     *
+     * @author      Alex Kaariainen <alex.kaariainen@valpo.edu>
+     * @version     1.0
+     * @since       0.9
+     * @deprecated  1.0
+     */
     public static int popupFontSize(){
         TextInputDialog dialog = new TextInputDialog();
         dialog.setTitle("Font Size");
@@ -181,16 +240,16 @@ public class Popup {
         return Integer.valueOf(result.get());
     }
 
-    //line width dialog
-    public static int popupTextSize(){
-        TextInputDialog dialog = new TextInputDialog();
-        dialog.setTitle("Font Size");
-        dialog.setHeaderText("Enter new font size pixels.");
-        dialog.setContentText("Font Size (px):");
-        Optional<String> result = dialog.showAndWait();
-        return Integer.valueOf(result.get());
-    }
-
+    /**
+     *
+     * Creates a popup dialog to get desired user text.
+     *
+     * @return      Returns the user message to be displayed
+     *
+     * @author      Alex Kaariainen <alex.kaariainen@valpo.edu>
+     * @version     1.0
+     * @since       0.9
+     */
     public static String popupText(){
         TextInputDialog dialog = new TextInputDialog();
         dialog.setTitle("Text");
@@ -198,6 +257,5 @@ public class Popup {
         dialog.setContentText("Text:");
         Optional<String> result = dialog.showAndWait();
         return result.toString();
-        //return result.get();// TODO <-- this should work
     }
 }

@@ -2,41 +2,24 @@ package imgMnp;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
-import javafx.application.Platform;
-import javafx.embed.swing.SwingFXUtils;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.geometry.Rectangle2D;
-import javafx.scene.Scene;
-import javafx.scene.SnapshotParameters;
 import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.ColorPicker;
-import javafx.scene.control.MenuItem;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.image.WritableImage;
-import javafx.scene.paint.Color;
-import javafx.stage.FileChooser;
-import javafx.util.Pair;
-
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import java.net.URL;
-import java.nio.file.Files;
-import java.util.Optional;
-import java.util.ResourceBundle;
-import java.util.Stack;
-
-import main.ErrorHandle;
 
 public class Rectangle{
 
+    /**
+     *
+     * Draws a solid rectangle. Top left point in rectangle is selected, rectangle is the previewed as mouse is moved,
+     * rectangle is drawn after second mouse press.
+     *
+     * @return              true if shape successfully drawn, false otherwise
+     * @param canvas        Canvas used to draw the shape upon
+     * @param lineWidth     Line width in pixels
+     * @param color         Color of the shape
+     *
+     * @author      Alex Kaariainen <alex.kaariainen@valpo.edu>
+     * @version     0.8
+     * @since       0.5
+     */
     public static boolean solidRect(Canvas canvas, Color color, int lineWidth, Canvas previewCanvas){
         GraphicsContext gc = canvas.getGraphicsContext2D();
         GraphicsContext gcPreview = previewCanvas.getGraphicsContext2D();
@@ -45,7 +28,7 @@ public class Rectangle{
             previewCanvas.setOnMousePressed( mousePressEvent -> {
             double x1 = mousePressEvent.getX();
             double y1 = mousePressEvent.getY();
-            previewCanvas.setOnMouseDragged( mouseDragEvent -> {
+            previewCanvas.setOnMouseMoved( mouseDragEvent -> {
                 gcPreview.clearRect(0,0,640.0,480.0);
                 double topLeftX, topLeftY, width, height;
                 double x2 = mouseDragEvent.getX();
@@ -77,7 +60,7 @@ public class Rectangle{
 
                     mouseReleaseEvent.consume();
                     previewCanvas.setOnMouseReleased(null);
-                    previewCanvas.setOnMouseDragged(null);
+                    previewCanvas.setOnMouseMoved(null);
                     previewCanvas.setOnMousePressed(null);
                 });
             });
@@ -89,6 +72,20 @@ public class Rectangle{
         }
     }
 
+    /**
+     *
+     * Draws an empty rectangle. Top left point in rectangle is selected, rectangle is the previewed as mouse is moved,
+     * rectangle is drawn after second mouse press.
+     *
+     * @return              true if shape successfully drawn, false otherwise
+     * @param canvas        Canvas used to draw the shape upon
+     * @param lineWidth     Line width in pixels
+     * @param color         Color of the shape
+     *
+     * @author      Alex Kaariainen <alex.kaariainen@valpo.edu>
+     * @version     0.8
+     * @since       0.5
+     */
     public static boolean emptyRect(Canvas canvas, Color color, int lineWidth,Canvas previewCanvas) {
 
         GraphicsContext gc = canvas.getGraphicsContext2D();
@@ -98,7 +95,7 @@ public class Rectangle{
             previewCanvas.setOnMousePressed( mousePressEvent -> {
                 double x1 = mousePressEvent.getX();
                 double y1 = mousePressEvent.getY();
-                previewCanvas.setOnMouseDragged( mouseDragEvent -> {
+                previewCanvas.setOnMouseMoved( mouseDragEvent -> {
                     gcPreview.clearRect(0,0,640.0,480.0);
                     double topLeftX, topLeftY, width, height;
                     double x2 = mouseDragEvent.getX();
@@ -130,16 +127,15 @@ public class Rectangle{
 
                         mouseReleaseEvent.consume();
                         previewCanvas.setOnMouseReleased(null);
-                        previewCanvas.setOnMouseDragged(null);
+                        previewCanvas.setOnMouseMoved(null);
                         previewCanvas.setOnMousePressed(null);
                     });
-                    
                 });
                 mousePressEvent.consume();
             });
-            return true;//process happened
+            return true;
         } catch(Exception e){
-            return false;//process failed
+            return false;
         }
     }
 }
