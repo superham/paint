@@ -1,0 +1,114 @@
+
+Release notes
+______________________________________________________
+Version 1.0.1 Hotfix
+
+What’s Fixed
+	▪	Fixed the canvas floating away bug during undo/redo
+	▪	Opening multiple images no longer leads to program instability
+	▪	‘Save as’ no longer leads to program instability
+	▪	After ‘Save As’ the new file name is now updated system-wide
+	▪	No longer significant image quality loss upon many undo/redo.
+	⁃	This was achieved by moving away from lossy image types internally
+	▪	Color picker now works on most recent user modification
+	▪	Removed unnecessary debugging print statements in code
+	▪	Additional codebase clean up. Included things like:
+	⁃	Removed legacy code
+	⁃	Organized code
+	⁃	Added additional documentation
+	⁃	Flushed out the Java docs further
+	▪	Last change bug is still present but has less of an impact
+Known Issues
+	▪	User exiting an action mid stroke can lead application instability
+	▪	Image always fills 800x600 window
+	▪	Last change/edit appears to be a ghost copy until another change is made
+
+_________________________________________________
+Version 1.0 Release
+
+What’s new
+	▪	Removed all menubar icons as they look tacky unless at top level
+	▪	Can alter text size
+	▪	Can use bubble text
+	▪	Replaced various text fields with sliders
+	▪	General UI improvements
+	▪	Added layer count UI element
+	▪	General codebase improvements
+	▪	Fixed many bugs
+	▪	Improved program stability and performance
+
+Known Issues
+	▪	User exiting an action mid stroke can lead application instability
+	▪	Image always fills 800x600 window
+_________________________________________________
+Version 0.8
+
+What’s new
+	▪	User can add text to the image
+	▪	Color picker can select a color from the image
+	▪	Eraser tool added
+	▪	Triangle shape added
+	▪	Custom Shape Fill in added
+
+Known Issues
+	▪	Undoing and Redoing shifts the image upwards
+	▪	Changing the continuous line’s color can effect past cont. line’s color as well as the eraser tool
+	▪	Color picker does not work if selecting color from the most recent shape
+_________________________________________________
+
+Version 0.6
+
+What’s new
+	▪	Undo and Redo capabilities
+	▪	Preview of image modification
+	▪	Copy and Cut part of image
+	▪	Enhanced smart save
+
+Known Issues
+	▪	Undo and Redo feature moves the canvas
+	▪	First undo does not work due to incorrect canvas area bug above
+_________________________________________________
+
+Version 0.4
+
+What’s new
+	▪	Pencil tool
+	▪	width control
+	▪	solid and outline of square and circle
+	▪	enhanced smart save
+
+Known Issues
+	▪	Saving an image cuts off part of the image
+_________________________________________________
+Version 0.2
+Alpha
+
+What’s new
+	▪	Added hot key’s
+	▪	Added window icon
+	▪	Disable/Enable menu items at appropriate times
+	▪	Create a new canvas
+	▪	Re-sizeing canvas
+	▪	Custom dialogs and alerts
+	▪	Additional functional menu items. Ex set line width.
+	▪	UI redesign
+	▪	Menu bar navigation for file and exit actions
+	▪	Side menu bar for editing/paining upon image/canvas
+	▪	Changed IDE. Netbeans -> IntellJ
+
+Known Issues
+	▪	Canvas width not correctly set on top of image. Due to preserving the image’s aspect ratio.
+	▪	Cannot toggle line type. This is due to the MouseEvent’s not ending after changing selection.
+	▪	Saving edited image does not capture correct portion of window. The first x,y coord are passed the incorrect ref.
+_________________________________________________
+
+Version 0.1
+Alpha
+
+What’s new
+	▪	User able to open and view *.png, *.jpeg, *.gif, *.bmp
+	▪	User can ‘save’ and ‘save as’ selected images
+	▪	Menu bar navigation for file and exit actions
+
+Known Issues
+	▪	When ‘save as’ image as a different file type, the file is not correctly converted.
